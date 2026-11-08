@@ -1,0 +1,22 @@
+scenario,B,nonce_reuses_20y,flash_writes_20y,flash_lifetime_years,formula_B_min
+monthly (~1 per 30 days),10,0,105235,1.9,108
+monthly (~1 per 30 days),30,0,35169,5.7,108
+monthly (~1 per 30 days),100,0,10645,18.8,108
+monthly (~1 per 30 days),300,0,3636,55.0,108
+monthly (~1 per 30 days),1000,0,1192,167.8,108
+monthly (~1 per 30 days),3000,0,499,400.8,108
+monthly (~1 per 30 days),10000,0,286,699.3,108
+weekly (~1 per 7 days),10,0,105615,1.9,118
+weekly (~1 per 7 days),30,0,35583,5.6,118
+weekly (~1 per 7 days),100,0,11053,18.1,118
+weekly (~1 per 7 days),300,0,4086,48.9,118
+weekly (~1 per 7 days),1000,0,1687,118.6,118
+weekly (~1 per 7 days),3000,0,1135,176.2,118
+weekly (~1 per 7 days),10000,0,1082,184.8,118
+daily (~1 per day),10,0,108570,1.8,390
+daily (~1 per day),30,0,38801,5.2,390
+daily (~1 per day),100,0,14665,13.6,390
+daily (~1 per day),300,0,8465,23.6,390
+daily (~1 per day),1000,0,7464,26.8,390
+daily (~1 per day),3000,0,7460,26.8,390
+daily (~1 per day),10000,0,7460,26.8,390

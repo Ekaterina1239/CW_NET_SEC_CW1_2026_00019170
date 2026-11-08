@@ -1,0 +1,25 @@
+data,bytes,mode,operation,median_us,mean_us,stdev_us,throughput_MBps
+telemetry packet,72,AES-GCM,encrypt,8.7,8.95,0.8,8.3
+telemetry packet,72,AES-GCM,decrypt,5.7,6.79,5.95,12.6
+telemetry packet,72,AES-CTR,encrypt,12.9,15.01,9.47,5.6
+telemetry packet,72,AES-CTR,decrypt,18.75,30.49,35.3,3.8
+telemetry packet,72,AES-CBC,encrypt,19.9,21.6,10.98,3.6
+telemetry packet,72,AES-CBC,decrypt,18.3,19.05,10.26,3.9
+telemetry packet,72,AES-GCM-SIV,encrypt,9.9,11.8,10.32,7.3
+telemetry packet,72,AES-GCM-SIV,decrypt,14.1,17.46,31.65,5.1
+batch log,20340,AES-GCM,encrypt,17.3,20.27,11.81,1175.7
+batch log,20340,AES-GCM,decrypt,13.0,19.49,21.75,1564.6
+batch log,20340,AES-CTR,encrypt,26.4,31.35,32.4,770.5
+batch log,20340,AES-CTR,decrypt,24.8,37.12,35.32,820.2
+batch log,20340,AES-CBC,encrypt,58.3,68.7,42.51,348.9
+batch log,20340,AES-CBC,decrypt,32.8,41.88,30.78,620.1
+batch log,20340,AES-GCM-SIV,encrypt,122.55,122.07,50.45,166.0
+batch log,20340,AES-GCM-SIV,decrypt,104.1,131.63,108.2,195.4
+firmware dump,1048576,AES-GCM,encrypt,989.2,1101.15,422.34,1060.0
+firmware dump,1048576,AES-GCM,decrypt,1072.4,1115.52,263.82,977.8
+firmware dump,1048576,AES-CTR,encrypt,916.9,992.12,435.52,1143.6
+firmware dump,1048576,AES-CTR,decrypt,903.05,937.03,298.99,1161.1
+firmware dump,1048576,AES-CBC,encrypt,3947.1,5077.37,3164.19,265.7
+firmware dump,1048576,AES-CBC,decrypt,4451.3,4694.84,1223.92,235.6
+firmware dump,1048576,AES-GCM-SIV,encrypt,5696.05,5712.54,732.86,184.1
+firmware dump,1048576,AES-GCM-SIV,decrypt,6039.8,6130.64,896.72,173.6

@@ -1,0 +1,4 @@
+OS: Windows-11-10.0.26200-SP0
+CPU: Intel64 Family 6 Model 154 Stepping 3, GenuineIntel
+Python: 3.14.0
+cryptography: 50.0.1

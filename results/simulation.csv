@@ -1,0 +1,16 @@
+scenario,strategy,outages_20y,nonce_reuses_20y,flash_writes_20y,flash_lifetime_years,counter_values_skipped
+monthly (~1 per 30 days),RAM counter,265,1027186,0,inf,0
+monthly (~1 per 30 days),Flash write per message,265,0,1051200,0.2,0
+monthly (~1 per 30 days),Reserve-ahead (B=100),265,0,10645,18.8,13250
+monthly (~1 per 30 days),Reserve-ahead (B=1000),265,0,1192,167.8,140383
+monthly (~1 per 30 days),Random 96-bit nonce,265,0,0,inf,0
+weekly (~1 per 7 days),RAM counter,1069,1042632,0,inf,0
+weekly (~1 per 7 days),Flash write per message,1069,0,1051200,0.2,0
+weekly (~1 per 7 days),Reserve-ahead (B=100),1069,0,11057,18.1,54418
+weekly (~1 per 7 days),Reserve-ahead (B=1000),1069,0,1675,119.4,623152
+weekly (~1 per 7 days),Random 96-bit nonce,1069,0,0,inf,0
+daily (~1 per day),RAM counter,7335,1049918,0,inf,0
+daily (~1 per day),Flash write per message,7335,0,1051200,0.2,0
+daily (~1 per day),Reserve-ahead (B=100),7335,0,14578,13.7,406587
+daily (~1 per day),Reserve-ahead (B=1000),7335,0,7344,27.2,6291620
+daily (~1 per day),Random 96-bit nonce,7335,0,0,inf,0

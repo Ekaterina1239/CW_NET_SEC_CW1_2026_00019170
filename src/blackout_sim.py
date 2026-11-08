@@ -14,6 +14,7 @@ SCENARIOS = {                      # expected outages per day (assumed, see repo
     "monthly (~1 per 30 days)": 1 / 30,
     "weekly (~1 per 7 days)": 1 / 7,
     "daily (~1 per day)": 1.0,
+    "twice daily (~2 per day)": 2.0,
 }
 ENDURANCE = 10_000                 # flash write cycles per cell (conservative assumption)
 TARGET_YEARS = 20

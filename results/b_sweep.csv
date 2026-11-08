@@ -20,3 +20,10 @@ daily (~1 per day),300,0,8465,23.6,390
 daily (~1 per day),1000,0,7464,26.8,390
 daily (~1 per day),3000,0,7460,26.8,390
 daily (~1 per day),10000,0,7460,26.8,390
+twice daily (~2 per day),10,0,111970,1.8,
+twice daily (~2 per day),30,0,42770,4.7,
+twice daily (~2 per day),100,0,19448,10.3,
+twice daily (~2 per day),300,0,14951,13.4,
+twice daily (~2 per day),1000,0,14725,13.6,
+twice daily (~2 per day),3000,0,14725,13.6,
+twice daily (~2 per day),10000,0,14725,13.6,

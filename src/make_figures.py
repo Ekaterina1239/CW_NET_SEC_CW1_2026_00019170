@@ -91,6 +91,8 @@ def fig_b_choice():
         ax.plot([int(r["B"]) for r in pts], [float(r["flash_lifetime_years"]) for r in pts],
                 color=COLORS[j], linewidth=2, marker="o", markersize=5, label=scen)
         bmin = int(pts[0]["formula_B_min"])
+        if not pts[0]["formula_B_min"]:          # no B is enough for this scenario
+            continue
         ax.axvline(bmin, color=COLORS[j], linewidth=1, linestyle=":")
         ax.annotate(f"formula B = {bmin}", (bmin, 0.05 + 0.28 * j), xycoords=("data", "axes fraction"),
                     rotation=90, fontsize=7, color=MUTED, xytext=(3, 0), textcoords="offset points")

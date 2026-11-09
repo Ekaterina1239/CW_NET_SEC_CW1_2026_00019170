@@ -1,21 +1,21 @@
-scenario,strategy,outages_20y,nonce_reuses_20y,flash_writes_20y,flash_lifetime_years,counter_values_skipped
-monthly (~1 per 30 days),RAM counter,265,1027186,0,inf,0
-monthly (~1 per 30 days),Flash write per message,265,0,1051200,0.2,0
-monthly (~1 per 30 days),Reserve-ahead (B=100),265,0,10645,18.8,13250
-monthly (~1 per 30 days),Reserve-ahead (B=1000),265,0,1192,167.8,140383
-monthly (~1 per 30 days),Random 96-bit nonce,265,0,0,inf,0
-weekly (~1 per 7 days),RAM counter,1069,1042632,0,inf,0
-weekly (~1 per 7 days),Flash write per message,1069,0,1051200,0.2,0
-weekly (~1 per 7 days),Reserve-ahead (B=100),1069,0,11057,18.1,54418
-weekly (~1 per 7 days),Reserve-ahead (B=1000),1069,0,1675,119.4,623152
-weekly (~1 per 7 days),Random 96-bit nonce,1069,0,0,inf,0
-daily (~1 per day),RAM counter,7335,1049918,0,inf,0
-daily (~1 per day),Flash write per message,7335,0,1051200,0.2,0
-daily (~1 per day),Reserve-ahead (B=100),7335,0,14578,13.7,406587
-daily (~1 per day),Reserve-ahead (B=1000),7335,0,7344,27.2,6291620
-daily (~1 per day),Random 96-bit nonce,7335,0,0,inf,0
-twice daily (~2 per day),RAM counter,14633,1050451,0,inf,0
-twice daily (~2 per day),Flash write per message,14633,0,1051200,0.2,0
-twice daily (~2 per day),Reserve-ahead (B=100),14633,0,19417,10.3,890407
-twice daily (~2 per day),Reserve-ahead (B=1000),14633,0,14634,13.7,13581541
-twice daily (~2 per day),Random 96-bit nonce,14633,0,0,inf,0
+scenario,strategy,seeds,outages_mean,reuses_mean,reuses_sd,reuses_ci95,flash_writes_mean,flash_writes_sd,lifetime_years_mean,lifetime_years_sd,lifetime_years_ci95
+monthly (~1 per 30 days),RAM counter,10,247,1026090,4414,3157,0,0,inf,0.0,0.0
+monthly (~1 per 30 days),Flash write per message,10,247,0,0,0,1051200,0,0.2,0.0,0.0
+monthly (~1 per 30 days),Reserve-ahead (B=100),10,247,0,0,0,10634,10,18.8,0.02,0.01
+monthly (~1 per 30 days),Reserve-ahead (B=1000),10,247,0,0,0,1182,12,169.3,1.72,1.23
+monthly (~1 per 30 days),Random 96-bit nonce,10,247,0,0,0,0,0,inf,0.0,0.0
+weekly (~1 per 7 days),RAM counter,10,1044,1043241,1295,926,0,0,inf,0.0,0.0
+weekly (~1 per 7 days),Flash write per message,10,1044,0,0,0,1051200,0,0.2,0.0,0.0
+weekly (~1 per 7 days),Reserve-ahead (B=100),10,1044,0,0,0,11038,16,18.1,0.03,0.02
+weekly (~1 per 7 days),Reserve-ahead (B=1000),10,1044,0,0,0,1661,17,120.4,1.2,0.86
+weekly (~1 per 7 days),Random 96-bit nonce,10,1044,0,0,0,0,0,inf,0.0,0.0
+daily (~1 per day),RAM counter,10,7334,1049928,122,87,0,0,inf,0.0,0.0
+daily (~1 per day),Flash write per message,10,7334,0,0,0,1051200,0,0.2,0.0,0.0
+daily (~1 per day),Reserve-ahead (B=100),10,7334,0,0,0,14566,67,13.7,0.06,0.05
+daily (~1 per day),Reserve-ahead (B=1000),10,7334,0,0,0,7341,101,27.2,0.38,0.27
+daily (~1 per day),Random 96-bit nonce,10,7334,0,0,0,0,0,inf,0.0,0.0
+twice daily (~2 per day),RAM counter,10,14576,1050440,44,31,0,0,inf,0.0,0.0
+twice daily (~2 per day),Flash write per message,10,14576,0,0,0,1051200,0,0.2,0.0,0.0
+twice daily (~2 per day),Reserve-ahead (B=100),10,14576,0,0,0,19402,59,10.3,0.03,0.02
+twice daily (~2 per day),Reserve-ahead (B=1000),10,14576,0,0,0,14577,88,13.7,0.08,0.06
+twice daily (~2 per day),Random 96-bit nonce,10,14576,0,0,0,0,0,inf,0.0,0.0

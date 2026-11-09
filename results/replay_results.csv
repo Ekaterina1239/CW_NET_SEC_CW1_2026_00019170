@@ -1,0 +1,21 @@
+mode,scenario,server_counter_check,result,reason
+AES-GCM,A. replay of the last genuine packet,no,ACCEPTED,"accepted: {""dev"":""UZ-PV-000001"",""min"":380,""p_w"":43"
+AES-GCM,A. replay of the last genuine packet,yes,REJECTED,rejected: replay (same counter seen before)
+AES-GCM,B. injection of an older genuine packet,no,ACCEPTED,"accepted: {""dev"":""UZ-PV-000001"",""min"":365,""p_w"":10"
+AES-GCM,B. injection of an older genuine packet,yes,REJECTED,"rejected + ALERT: counter went backwards (old packet injected, or logger reset -> nonce reuse)"
+AES-GCM,C. logger reset: RAM counter restarts at 0,no,ACCEPTED,"accepted: {""dev"":""UZ-PV-000001"",""min"":720,""p_w"":50"
+AES-GCM,C. logger reset: RAM counter restarts at 0,yes,REJECTED,"rejected + ALERT: counter went backwards (old packet injected, or logger reset -> nonce reuse)"
+AES-GCM,D. reserve-ahead after outage: counter jumps to 1000,no,ACCEPTED,"accepted: {""dev"":""UZ-PV-000001"",""min"":720,""p_w"":50"
+AES-GCM,D. reserve-ahead after outage: counter jumps to 1000,yes,ACCEPTED,"accepted: {""dev"":""UZ-PV-000001"",""min"":720,""p_w"":50"
+AES-GCM,E. replay with forged header (counter set to 99),no,REJECTED,rejected: invalid tag (modified packet)
+AES-GCM,E. replay with forged header (counter set to 99),yes,REJECTED,rejected: invalid tag (modified packet)
+AES-CTR,A. replay of the last genuine packet,no,ACCEPTED,"accepted: {""dev"":""UZ-PV-000001"",""min"":380,""p_w"":43"
+AES-CTR,A. replay of the last genuine packet,yes,REJECTED,rejected: replay (same counter seen before)
+AES-CTR,B. injection of an older genuine packet,no,ACCEPTED,"accepted: {""dev"":""UZ-PV-000001"",""min"":365,""p_w"":10"
+AES-CTR,B. injection of an older genuine packet,yes,REJECTED,"rejected + ALERT: counter went backwards (old packet injected, or logger reset -> nonce reuse)"
+AES-CTR,C. logger reset: RAM counter restarts at 0,no,ACCEPTED,"accepted: {""dev"":""UZ-PV-000001"",""min"":720,""p_w"":50"
+AES-CTR,C. logger reset: RAM counter restarts at 0,yes,REJECTED,"rejected + ALERT: counter went backwards (old packet injected, or logger reset -> nonce reuse)"
+AES-CTR,D. reserve-ahead after outage: counter jumps to 1000,no,ACCEPTED,"accepted: {""dev"":""UZ-PV-000001"",""min"":720,""p_w"":50"
+AES-CTR,D. reserve-ahead after outage: counter jumps to 1000,yes,ACCEPTED,"accepted: {""dev"":""UZ-PV-000001"",""min"":720,""p_w"":50"
+AES-CTR,E. replay with forged header (counter set to 99),no,ACCEPTED,accepted: garbled data (no error raised)
+AES-CTR,E. replay with forged header (counter set to 99),yes,ACCEPTED,accepted: garbled data (no error raised)

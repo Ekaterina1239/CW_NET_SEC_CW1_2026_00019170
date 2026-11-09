@@ -1,3 +1,5 @@
+"""E1 (RQ1): latency and throughput of AES modes for three data sizes.
+"""
 import csv
 import platform
 import statistics
@@ -8,6 +10,7 @@ from pathlib import Path
 import cryptography
 
 import crypto_modes as cm
+from stats import percentile, summary
 from telemetry import DATA_SIZES
 
 RESULTS = Path(__file__).resolve().parent.parent / "results"
@@ -34,7 +37,7 @@ def time_ns(func):
 def main():
     RESULTS.mkdir(exist_ok=True)
     key = cm.new_key()
-    raw, summary = [], []
+    raw, table = [], []
     for size_name, make in DATA_SIZES.items():
         data = make()
         for mode, (enc, dec) in mode_functions(key).items():
@@ -50,15 +53,20 @@ def main():
                         times.append(time_ns(lambda: dec(packet, i)))
                 raw += [[size_name, len(data), mode, op, r, t] for r, t in enumerate(times)]
                 med = statistics.median(times)
-                summary.append([size_name, len(data), mode, op, round(med / 1000, 2),
-                                round(statistics.mean(times) / 1000, 2), round(statistics.stdev(times) / 1000, 2),
-                                round(len(data) / (med / 1e9) / 1e6, 1)])
-                print(f"{size_name:17} {mode:12} {op:8} median {summary[-1][4]:>10} us  {summary[-1][7]:>9} MB/s")
+                mean, sd, ci = summary(times)
+                p5, p95 = percentile(times, 5), percentile(times, 95)
+                mbps = lambda t: round(len(data) / (t / 1e9) / 1e6, 1)
+                table.append([size_name, len(data), mode, op, round(med / 1000, 2), round(mean / 1000, 2),
+                              round(sd / 1000, 2), round(ci / 1000, 2), round(p5 / 1000, 2), round(p95 / 1000, 2),
+                              mbps(med), mbps(p95), mbps(p5)])
+                print(f"{size_name:17} {mode:12} {op:8} median {table[-1][4]:>9} us  "
+                      f"p5-p95 {table[-1][8]}-{table[-1][9]} us  {table[-1][10]:>9} MB/s")
     with open(RESULTS / "benchmark_raw.csv", "w", newline="", encoding="utf-8") as f:
         csv.writer(f).writerows([["data", "bytes", "mode", "operation", "run", "time_ns"]] + raw)
     with open(RESULTS / "benchmark_summary.csv", "w", newline="", encoding="utf-8") as f:
-        csv.writer(f).writerows([["data", "bytes", "mode", "operation", "median_us", "mean_us",
-                                  "stdev_us", "throughput_MBps"]] + summary)
+        csv.writer(f).writerows([["data", "bytes", "mode", "operation", "median_us", "mean_us", "sd_us",
+                                  "ci95_us", "p5_us", "p95_us", "throughput_MBps", "throughput_p95time_MBps",
+                                  "throughput_p5time_MBps"]] + table)
     env = (f"OS: {platform.platform()}\nCPU: {platform.processor() or platform.machine()}\n"
            f"Python: {sys.version.split()[0]}\ncryptography: {cryptography.__version__}\n")
     (RESULTS / "environment.txt").write_text(env, encoding="utf-8")

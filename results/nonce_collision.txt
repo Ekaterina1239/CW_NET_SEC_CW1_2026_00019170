@@ -2,3 +2,4 @@ messages per key over 20 years : 1,051,200
 collision probability (birthday bound): 6.97e-18
 NIST SP 800-38D limit (random nonces) : 4,294,967,296 messages per key
 share of the NIST limit used          : 0.024 %
+messages for a 1-in-a-billion risk    : 12,587,943,637

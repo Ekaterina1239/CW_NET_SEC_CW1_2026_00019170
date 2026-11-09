@@ -1,3 +1,4 @@
+"""Draws the result charts from the CSV files in results/ -> results/figures/*.png"""
 import csv
 from pathlib import Path
 
@@ -26,12 +27,17 @@ def style(ax, title, ylabel):
     ax.set_axisbelow(True)
 
 
-def grouped_bars(ax, groups, series, value, log=True, labels=True):
+def grouped_bars(ax, groups, series, value, log=True, labels=True, err=None):
+    """err(g, s) -> (minus, plus) distances for an error bar, or None."""
     width = 0.8 / len(series)
     for j, s in enumerate(series):
         xs = [i + (j - (len(series) - 1) / 2) * width for i in range(len(groups))]
         ys = [value(g, s) for g in groups]
         bars = ax.bar(xs, ys, width * 0.92, color=COLORS[j], label=s)
+        if err:
+            e = [err(g, s) for g in groups]
+            ax.errorbar(xs, ys, yerr=[[m for m, _ in e], [p for _, p in e]], fmt="none",
+                        ecolor=INK, elinewidth=0.8, capsize=2)
         if labels:
             for b, y in zip(bars, ys):
                 ax.annotate(f"{y:,.0f}" if y >= 10 else f"{y:.1f}", (b.get_x() + b.get_width() / 2, y),
@@ -48,10 +54,13 @@ def fig_throughput():
     sizes = list(dict.fromkeys(r["data"] for r in rows))
     modes = list(dict.fromkeys(r["mode"] for r in rows))
     get = {(r["data"], r["mode"]): float(r["throughput_MBps"]) for r in rows}
+    lo = {(r["data"], r["mode"]): float(r["throughput_p95time_MBps"]) for r in rows}   # slow runs
+    hi = {(r["data"], r["mode"]): float(r["throughput_p5time_MBps"]) for r in rows}    # fast runs
     fig, ax = plt.subplots(figsize=(7.5, 3.8), dpi=200)
-    grouped_bars(ax, sizes, modes, lambda g, s: get[(g, s)])
+    grouped_bars(ax, sizes, modes, lambda g, s: get[(g, s)],
+                 err=lambda g, s: (get[(g, s)] - lo[(g, s)], hi[(g, s)] - get[(g, s)]))
     ax.set_xticks(range(len(sizes)), [f"{s}\n({int(next(r['bytes'] for r in rows if r['data'] == s)):,} B)" for s in sizes])
-    style(ax, "Encryption throughput by mode and data size (median of 100 runs)", "MB/s (log scale)")
+    style(ax, "Encryption throughput by mode and data size (median, bars = 5th-95th percentile)", "MB/s (log scale)")
     fig.tight_layout(); fig.savefig(FIG / "fig_throughput.png"); plt.close(fig)
 
 
@@ -60,26 +69,29 @@ def fig_reuse_share():
     scen = list(dict.fromkeys(r["scenario"] for r in rows))
     strat = list(dict.fromkeys(r["strategy"] for r in rows))
     total = 20 * 365 * 144
-    get = {(r["strategy"], r["scenario"]): 100 * int(r["nonce_reuses_20y"]) / total for r in rows}
+    get = {(r["strategy"], r["scenario"]): 100 * float(r["reuses_mean"]) / total for r in rows}
+    ci = {(r["strategy"], r["scenario"]): 100 * float(r["reuses_ci95"]) / total for r in rows}
     fig, ax = plt.subplots(figsize=(7.5, 3.6), dpi=200)
-    grouped_bars(ax, strat, scen, lambda g, s: get[(g, s)], log=False)
+    grouped_bars(ax, strat, scen, lambda g, s: get[(g, s)], log=False,
+                 err=lambda g, s: (ci[(g, s)], ci[(g, s)]))
     ax.set_xticks(range(len(strat)), [s.replace(" (", "\n(") for s in strat], fontsize=8)
     ax.set_ylim(0, 110)
-    style(ax, "Share of messages sent with an already-used nonce over 20 years", "% of messages")
+    style(ax, "Share of messages sent with an already-used nonce over 20 years (mean, 95% CI)", "% of messages")
     fig.tight_layout(); fig.savefig(FIG / "fig_nonce_reuse.png"); plt.close(fig)
 
 
 def fig_flash_lifetime():
-    rows = [r for r in read("simulation.csv") if r["flash_lifetime_years"] != "inf"]
+    rows = [r for r in read("simulation.csv") if r["lifetime_years_mean"] != "inf"]
     scen = list(dict.fromkeys(r["scenario"] for r in rows))
     strat = list(dict.fromkeys(r["strategy"] for r in rows))
-    get = {(r["strategy"], r["scenario"]): float(r["flash_lifetime_years"]) for r in rows}
+    get = {(r["strategy"], r["scenario"]): float(r["lifetime_years_mean"]) for r in rows}
+    ci = {(r["strategy"], r["scenario"]): float(r["lifetime_years_ci95"]) for r in rows}
     fig, ax = plt.subplots(figsize=(7.5, 3.6), dpi=200)
-    grouped_bars(ax, strat, scen, lambda g, s: get[(g, s)])
+    grouped_bars(ax, strat, scen, lambda g, s: get[(g, s)], err=lambda g, s: (ci[(g, s)], ci[(g, s)]))
     ax.axhline(20, color=INK, linewidth=1, linestyle="--")
-    ax.annotate("20-year service life", (-0.45, 20), ha="left", va="bottom", fontsize=8, color=INK,
+    ax.annotate("20-year service life", (1.5, 20), ha="center", va="bottom", fontsize=8, color=INK,
                 xytext=(0, 2), textcoords="offset points")
-    style(ax, "Flash lifetime by strategy (10,000 write cycles, no wear-levelling)", "years (log scale)")
+    style(ax, "Flash lifetime by strategy (10,000 cycles, no wear-levelling; mean, 95% CI)", "years (log scale)")
     fig.tight_layout(); fig.savefig(FIG / "fig_flash_lifetime.png"); plt.close(fig)
 
 
@@ -88,11 +100,11 @@ def fig_b_choice():
     fig, ax = plt.subplots(figsize=(7.5, 3.8), dpi=200)
     for j, scen in enumerate(dict.fromkeys(r["scenario"] for r in rows)):
         pts = [r for r in rows if r["scenario"] == scen]
-        ax.plot([int(r["B"]) for r in pts], [float(r["flash_lifetime_years"]) for r in pts],
+        ax.plot([int(r["B"]) for r in pts], [float(r["lifetime_years_mean"]) for r in pts],
                 color=COLORS[j], linewidth=2, marker="o", markersize=5, label=scen)
-        bmin = int(pts[0]["formula_B_min"])
         if not pts[0]["formula_B_min"]:          # no B is enough for this scenario
             continue
+        bmin = int(pts[0]["formula_B_min"])
         ax.axvline(bmin, color=COLORS[j], linewidth=1, linestyle=":")
         ax.annotate(f"formula B = {bmin}", (bmin, 0.05 + 0.28 * j), xycoords=("data", "axes fraction"),
                     rotation=90, fontsize=7, color=MUTED, xytext=(3, 0), textcoords="offset points")

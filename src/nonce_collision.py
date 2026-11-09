@@ -1,4 +1,7 @@
-"""Probability that random 96-bit nonces collide """
+"""Probability that random 96-bit nonces collide (birthday bound).
+p ~= n^2 / 2^(b+1)   for n messages and b-bit nonces (valid while p is small).
+NIST SP 800-38D also limits random 96-bit nonces to 2^32 messages per key.
+"""
 import blackout_sim as bs
 
 BITS = 96
@@ -16,6 +19,7 @@ def main():
         f"collision probability (birthday bound): {collision_probability(n):.2e}",
         f"NIST SP 800-38D limit (random nonces) : {NIST_LIMIT:,} messages per key",
         f"share of the NIST limit used          : {100 * n / NIST_LIMIT:.3f} %",
+        f"messages for a 1-in-a-billion risk    : {int((2 * 2 ** BITS * 1e-9) ** 0.5):,}",
     ]
     print("\n".join(lines))
     (bs.RESULTS / "nonce_collision.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")

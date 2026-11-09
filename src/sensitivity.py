@@ -1,4 +1,5 @@
-"""how do the conclusions change with flash endurance"""
+"""Sensitivity analysis: how do the conclusions change with flash endurance?
+"""
 import csv
 
 import blackout_sim as bs
@@ -16,14 +17,12 @@ def main():
             per_msg = bs.simulate(ns.FlashPerMessage, rate, seed=0)
             ra1000 = bs.simulate(lambda: ns.ReserveAhead(1000), rate, seed=0)
             rows.append([endurance, scen, rule if rule else "none (impossible)",
-                         round(per_msg["flash_lifetime_years"], 2),
-                         round(ra1000["flash_lifetime_years"], 1)])
+                         round(per_msg["flash_lifetime_years"], 2), round(ra1000["flash_lifetime_years"], 1)])
             print(rows[-1])
     bs.ENDURANCE = 10_000                            # restore the default
     with open(bs.RESULTS / "sensitivity.csv", "w", newline="", encoding="utf-8") as f:
         csv.writer(f).writerows([["flash_endurance_cycles", "scenario", "formula_B_min",
-                                  "lifetime_flash_per_message_years",
-                                  "lifetime_reserve_ahead_B1000_years"]] + rows)
+                                  "lifetime_flash_per_message_years", "lifetime_reserve_ahead_B1000_years"]] + rows)
 
 
 if __name__ == "__main__":

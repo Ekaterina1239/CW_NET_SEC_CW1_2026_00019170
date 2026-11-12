@@ -16,6 +16,5 @@ attack successful: True
 nonce day 1 : 000000010000000000000000
 nonce day 2 : 000000010000000000000000  (SAME)
 real        : {"dev":"UZ-PV-000001","min":720,"p_w":5000.0,"v_dc":380.0,"status":"OK"}
-recovered   : �4�CK'�>�c��
-C+��i�'\�=��K,!�Ǎ���7�Q���>�h�_8�ZpY�{h�[����½I
+recovered   : ��T�B������u�^C�O��O�+����lY�'�ݛEs������ϒ��U��|ai7|�/���
 attack successful: False

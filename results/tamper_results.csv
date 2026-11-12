@@ -6,8 +6,8 @@ AES-GCM,header (AAD) changed,YES,InvalidTag
 AES-GCM,wrong key,YES,InvalidTag
 AES-CTR,1 bit flipped,NO,"z""dev"":""UZ-PV-000001"",""min"":720,""p_w"":5000.0,"
 AES-CTR,power value changed,NO,"{""dev"":""UZ-PV-000001"",""min"":720,""p_w"":9000.0,"
-AES-CTR,header changed,NO,"��=�����]i�a�b�ڬmiz�n��BI��9���5Qs"
-AES-CTR,wrong key,NO,"��vq<lZ������S��b��c���k|P��`�ش���aD�²"
+AES-CTR,header changed,NO,"2�&�_����V�Y�eo�-�p�K���)�9!������}^�U"
+AES-CTR,wrong key,NO,"�5-ݲ|kGii�;'oP/l�t��,������b�+�[�zl&,"
 AES-CBC,IV changed (device id),NO,"{""dev"":""UZ-PV-070001"",""min"":720,""p_w"":5000.0,"
-AES-CBC,1 bit flipped,NO,"AV�bq�ݐ��j����1001"",""min"":720,""p_w"":5000.0,"
+AES-CBC,1 bit flipped,NO,"������:�}�2�/�r1001"",""min"":720,""p_w"":5000.0,"
 AES-CBC,wrong key,YES,ValueError

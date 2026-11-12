@@ -1,0 +1,6 @@
+city,years,reporting_hours,share_zero_power_pct,share_below_100W_pct,mean_power_W
+Bukhara.csv,2016-2020,21924,8.3,13.4,1553.4
+Fergana.csv,2016-2020,21924,7.3,12.5,1466.8
+Nukus.csv,2016-2020,21924,10.0,15.3,1446.6
+Samarkand.csv,2016-2020,21924,8.0,12.9,1514.7
+Tashkent.csv,2016-2020,21924,8.1,13.8,1449.4

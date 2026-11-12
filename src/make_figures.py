@@ -1,4 +1,3 @@
-"""Draws the result charts from the CSV files in results/ -> results/figures/*.png"""
 import csv
 from pathlib import Path
 
@@ -117,9 +116,24 @@ def fig_b_choice():
     fig.tight_layout(); fig.savefig(FIG / "fig_b_choice.png"); plt.close(fig)
 
 
+def fig_predictability():
+    path = RESULTS / "predictability.csv"
+    if not path.exists():
+        return
+    rows = read("predictability.csv")
+    cities = [r["city"] for r in rows]
+    fig, ax = plt.subplots(figsize=(7.5, 3.4), dpi=200)
+    grouped_bars(ax, cities, ["0 W (fully predictable)", "below 100 W"], log=False,
+                 value=lambda c, s: float(next(r for r in rows if r["city"] == c)
+                                          ["share_zero_power_pct" if s.startswith("0 W") else "share_below_100W_pct"]))
+    ax.set_ylim(0, 100)
+    style(ax, "Reporting hours (06:00-18:00) with predictable power, PVGIS data", "% of reporting hours")
+    fig.tight_layout(); fig.savefig(FIG / "fig_predictability.png"); plt.close(fig)
+
+
 def main():
     FIG.mkdir(parents=True, exist_ok=True)
-    fig_throughput(); fig_reuse_share(); fig_flash_lifetime(); fig_b_choice()
+    fig_throughput(); fig_reuse_share(); fig_flash_lifetime(); fig_b_choice(); fig_predictability()
     print("figures saved to", FIG)
 
 

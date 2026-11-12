@@ -1,5 +1,3 @@
-"""E4 (RQ4): 20 years of a solar logger with random power outages.
-"""
 import csv
 import math
 import random
@@ -13,12 +11,24 @@ RESULTS = Path(__file__).resolve().parent.parent / "results"
 YEARS = 20
 MSG_PER_DAY = 144                  # one message every 5 min from 06:00 to 18:00
 MSG_PER_YEAR = MSG_PER_DAY * 365
-SCENARIOS = {                      # expected outages per day (assumed, see report)
+DEFAULT_SCENARIOS = {              # used only if data/outages_uzbekistan.csv is missing
     "monthly (~1 per 30 days)": 1 / 30,
     "weekly (~1 per 7 days)": 1 / 7,
     "daily (~1 per day)": 1.0,
-    "twice daily (~2 per day)": 2.0,        # stress scenario
+    "twice daily (~2 per day)": 2.0,
 }
+
+
+def load_scenarios():
+    """Outage scenarios from the real-data file (World Bank Enterprise Surveys), else defaults."""
+    try:
+        from datasets import load_outage_scenarios
+        return load_outage_scenarios()
+    except FileNotFoundError:
+        return DEFAULT_SCENARIOS
+
+
+SCENARIOS = load_scenarios()       # {label: expected outages per day}
 ENDURANCE = 10_000                 # flash write cycles per cell (conservative assumption)
 TARGET_YEARS = 20
 

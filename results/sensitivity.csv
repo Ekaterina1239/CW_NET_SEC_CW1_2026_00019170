@@ -1,9 +1,9 @@
 flash_endurance_cycles,scenario,formula_B_min,lifetime_flash_per_message_years,lifetime_reserve_ahead_B1000_years
-10000,monthly (~1 per 30 days),108,0.19,167.8
-10000,weekly (~1 per 7 days),118,0.19,118.6
-10000,daily (~1 per day),390,0.19,26.8
-10000,twice daily (~2 per day),none (impossible),0.19,13.6
-100000,monthly (~1 per 30 days),11,1.9,1677.9
-100000,weekly (~1 per 7 days),11,1.9,1185.5
-100000,daily (~1 per day),12,1.9,268.0
-100000,twice daily (~2 per day),13,1.9,135.8
+10000,"calm (0.7/month, 2024)",107,0.19,175.7
+10000,"average (1.9/month, 2019)",111,0.19,154.4
+10000,"bad (6.8/month, 2013)",126,0.19,95.4
+10000,"stress (60/month, 2025)",none (impossible),0.19,13.6
+100000,"calm (0.7/month, 2024)",11,1.9,1757.5
+100000,"average (1.9/month, 2019)",11,1.9,1544.4
+100000,"bad (6.8/month, 2013)",11,1.9,953.7
+100000,"stress (60/month, 2025)",13,1.9,135.8

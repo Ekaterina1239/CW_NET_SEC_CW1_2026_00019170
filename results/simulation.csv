@@ -1,21 +1,21 @@
 scenario,strategy,seeds,outages_mean,reuses_mean,reuses_sd,reuses_ci95,flash_writes_mean,flash_writes_sd,lifetime_years_mean,lifetime_years_sd,lifetime_years_ci95
-monthly (~1 per 30 days),RAM counter,10,247,1026090,4414,3157,0,0,inf,0.0,0.0
-monthly (~1 per 30 days),Flash write per message,10,247,0,0,0,1051200,0,0.2,0.0,0.0
-monthly (~1 per 30 days),Reserve-ahead (B=100),10,247,0,0,0,10634,10,18.8,0.02,0.01
-monthly (~1 per 30 days),Reserve-ahead (B=1000),10,247,0,0,0,1182,12,169.3,1.72,1.23
-monthly (~1 per 30 days),Random 96-bit nonce,10,247,0,0,0,0,0,inf,0.0,0.0
-weekly (~1 per 7 days),RAM counter,10,1044,1043241,1295,926,0,0,inf,0.0,0.0
-weekly (~1 per 7 days),Flash write per message,10,1044,0,0,0,1051200,0,0.2,0.0,0.0
-weekly (~1 per 7 days),Reserve-ahead (B=100),10,1044,0,0,0,11038,16,18.1,0.03,0.02
-weekly (~1 per 7 days),Reserve-ahead (B=1000),10,1044,0,0,0,1661,17,120.4,1.2,0.86
-weekly (~1 per 7 days),Random 96-bit nonce,10,1044,0,0,0,0,0,inf,0.0,0.0
-daily (~1 per day),RAM counter,10,7334,1049928,122,87,0,0,inf,0.0,0.0
-daily (~1 per day),Flash write per message,10,7334,0,0,0,1051200,0,0.2,0.0,0.0
-daily (~1 per day),Reserve-ahead (B=100),10,7334,0,0,0,14566,67,13.7,0.06,0.05
-daily (~1 per day),Reserve-ahead (B=1000),10,7334,0,0,0,7341,101,27.2,0.38,0.27
-daily (~1 per day),Random 96-bit nonce,10,7334,0,0,0,0,0,inf,0.0,0.0
-twice daily (~2 per day),RAM counter,10,14576,1050440,44,31,0,0,inf,0.0,0.0
-twice daily (~2 per day),Flash write per message,10,14576,0,0,0,1051200,0,0.2,0.0,0.0
-twice daily (~2 per day),Reserve-ahead (B=100),10,14576,0,0,0,19402,59,10.3,0.03,0.02
-twice daily (~2 per day),Reserve-ahead (B=1000),10,14576,0,0,0,14577,88,13.7,0.08,0.06
-twice daily (~2 per day),Random 96-bit nonce,10,14576,0,0,0,0,0,inf,0.0,0.0
+"calm (0.7/month, 2024)",RAM counter,10,173,1016481,6196,4432,0,0,inf,0.0,0.0
+"calm (0.7/month, 2024)",Flash write per message,10,173,0,0,0,1051200,0,0.2,0.0,0.0
+"calm (0.7/month, 2024)",Reserve-ahead (B=100),10,173,0,0,0,10597,8,18.9,0.01,0.01
+"calm (0.7/month, 2024)",Reserve-ahead (B=1000),10,173,0,0,0,1140,9,175.4,1.34,0.96
+"calm (0.7/month, 2024)",Random 96-bit nonce,10,173,0,0,0,0,0,inf,0.0,0.0
+"average (1.9/month, 2019)",RAM counter,10,463,1036705,1985,1420,0,0,inf,0.0,0.0
+"average (1.9/month, 2019)",Flash write per message,10,463,0,0,0,1051200,0,0.2,0.0,0.0
+"average (1.9/month, 2019)",Reserve-ahead (B=100),10,463,0,0,0,10742,12,18.6,0.02,0.01
+"average (1.9/month, 2019)",Reserve-ahead (B=1000),10,463,0,0,0,1299,18,154.0,2.14,1.53
+"average (1.9/month, 2019)",Random 96-bit nonce,10,463,0,0,0,0,0,inf,0.0,0.0
+"bad (6.8/month, 2013)",RAM counter,10,1660,1046198,694,497,0,0,inf,0.0,0.0
+"bad (6.8/month, 2013)",Flash write per message,10,1660,0,0,0,1051200,0,0.2,0.0,0.0
+"bad (6.8/month, 2013)",Reserve-ahead (B=100),10,1660,0,0,0,11359,23,17.6,0.03,0.03
+"bad (6.8/month, 2013)",Reserve-ahead (B=1000),10,1660,0,0,0,2088,27,95.8,1.21,0.87
+"bad (6.8/month, 2013)",Random 96-bit nonce,10,1660,0,0,0,0,0,inf,0.0,0.0
+"stress (60/month, 2025)",RAM counter,10,14576,1050440,44,31,0,0,inf,0.0,0.0
+"stress (60/month, 2025)",Flash write per message,10,14576,0,0,0,1051200,0,0.2,0.0,0.0
+"stress (60/month, 2025)",Reserve-ahead (B=100),10,14576,0,0,0,19402,59,10.3,0.03,0.02
+"stress (60/month, 2025)",Reserve-ahead (B=1000),10,14576,0,0,0,14577,88,13.7,0.08,0.06
+"stress (60/month, 2025)",Random 96-bit nonce,10,14576,0,0,0,0,0,inf,0.0,0.0

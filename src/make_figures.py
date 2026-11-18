@@ -97,6 +97,7 @@ def fig_flash_lifetime():
 def fig_b_choice():
     rows = read("b_sweep.csv")
     fig, ax = plt.subplots(figsize=(7.5, 3.8), dpi=200)
+    notes = []                                   # formula values, shown in one box (lines are too close to label)
     for j, scen in enumerate(dict.fromkeys(r["scenario"] for r in rows)):
         pts = [r for r in rows if r["scenario"] == scen]
         ax.plot([int(r["B"]) for r in pts], [float(r["lifetime_years_mean"]) for r in pts],
@@ -105,8 +106,11 @@ def fig_b_choice():
             continue
         bmin = int(pts[0]["formula_B_min"])
         ax.axvline(bmin, color=COLORS[j], linewidth=1, linestyle=":")
-        ax.annotate(f"formula B = {bmin}", (bmin, 0.05 + 0.28 * j), xycoords=("data", "axes fraction"),
-                    rotation=90, fontsize=7, color=MUTED, xytext=(3, 0), textcoords="offset points")
+        notes.append(f"{scen.split(' (')[0]}: B_min = {bmin}")
+    notes.append("stress: no B reaches 20 years")
+    ax.text(0.98, 0.04, "Formula (dotted lines)\n" + "\n".join(notes), transform=ax.transAxes,
+            ha="right", va="bottom", fontsize=7, color=MUTED,
+            bbox=dict(boxstyle="round,pad=0.4", facecolor="white", edgecolor="#dddddd"))
     ax.axhline(20, color=INK, linewidth=1, linestyle="--")
     ax.annotate("20-year target", (10, 20), va="bottom", fontsize=8, color=INK)
     ax.set_xscale("log"); ax.set_yscale("log")

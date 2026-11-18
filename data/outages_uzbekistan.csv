@@ -1,0 +1,5 @@
+scenario,outages_per_month,year,source
+calm,0.7,2024,World Bank Enterprise Surveys - Uzbekistan 2024 country profile
+average,1.9,2019,World Bank Enterprise Surveys (indicator IC.ELC.OUTG)
+bad,6.8,2013,World Bank Enterprise Surveys (indicator IC.ELC.OUTG)
+stress,60,2025,Kun.uz 14 Jul 2025: up to 8-10 outages a day at some businesses (2 per day assumed)

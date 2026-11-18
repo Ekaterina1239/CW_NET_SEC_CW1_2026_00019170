@@ -1,29 +1,29 @@
 scenario,B,nonce_reuses_all_seeds,lifetime_years_mean,lifetime_years_ci95,formula_B_min
-monthly (~1 per 30 days),10,0,1.9,0.0,108
-monthly (~1 per 30 days),30,0,5.7,0.0,108
-monthly (~1 per 30 days),100,0,18.8,0.02,108
-monthly (~1 per 30 days),300,0,55.1,0.23,108
-monthly (~1 per 30 days),1000,0,168.8,1.92,108
-monthly (~1 per 30 days),3000,0,405.4,12.9,108
-monthly (~1 per 30 days),10000,0,722.1,56.86,108
-weekly (~1 per 7 days),10,0,1.9,0.0,118
-weekly (~1 per 7 days),30,0,5.6,0.0,118
-weekly (~1 per 7 days),100,0,18.1,0.04,118
-weekly (~1 per 7 days),300,0,49.2,0.36,118
-weekly (~1 per 7 days),1000,0,120.1,1.35,118
-weekly (~1 per 7 days),3000,0,180.7,4.22,118
-weekly (~1 per 7 days),10000,0,190.3,6.17,118
-daily (~1 per day),10,0,1.8,0.0,390
-daily (~1 per day),30,0,5.2,0.01,390
-daily (~1 per day),100,0,13.7,0.09,390
-daily (~1 per day),300,0,23.9,0.33,390
-daily (~1 per day),1000,0,27.2,0.56,390
-daily (~1 per day),3000,0,27.3,0.56,390
-daily (~1 per day),10000,0,27.3,0.56,390
-twice daily (~2 per day),10,0,1.8,0.0,
-twice daily (~2 per day),30,0,4.7,0.01,
-twice daily (~2 per day),100,0,10.3,0.04,
-twice daily (~2 per day),300,0,13.5,0.1,
-twice daily (~2 per day),1000,0,13.7,0.1,
-twice daily (~2 per day),3000,0,13.7,0.1,
-twice daily (~2 per day),10000,0,13.7,0.1,
+"calm (0.7/month, 2024)",10,0,1.9,0.0,107
+"calm (0.7/month, 2024)",30,0,5.7,0.0,107
+"calm (0.7/month, 2024)",100,0,18.9,0.01,107
+"calm (0.7/month, 2024)",300,0,55.7,0.11,107
+"calm (0.7/month, 2024)",1000,0,175.3,1.05,107
+"calm (0.7/month, 2024)",3000,0,450.3,7.34,107
+"calm (0.7/month, 2024)",10000,0,926.1,43.37,107
+"average (1.9/month, 2019)",10,0,1.9,0.0,111
+"average (1.9/month, 2019)",30,0,5.7,0.0,111
+"average (1.9/month, 2019)",100,0,18.6,0.03,111
+"average (1.9/month, 2019)",300,0,53.4,0.29,111
+"average (1.9/month, 2019)",1000,0,153.7,2.93,111
+"average (1.9/month, 2019)",3000,0,315.0,13.11,111
+"average (1.9/month, 2019)",10000,0,422.0,29.45,111
+"bad (6.8/month, 2013)",10,0,1.9,0.0,126
+"bad (6.8/month, 2013)",30,0,5.6,0.01,126
+"bad (6.8/month, 2013)",100,0,17.6,0.06,126
+"bad (6.8/month, 2013)",300,0,45.5,0.4,126
+"bad (6.8/month, 2013)",1000,0,95.8,2.1,126
+"bad (6.8/month, 2013)",3000,0,119.9,4.13,126
+"bad (6.8/month, 2013)",10000,0,120.8,4.37,126
+"stress (60/month, 2025)",10,0,1.8,0.0,
+"stress (60/month, 2025)",30,0,4.7,0.01,
+"stress (60/month, 2025)",100,0,10.3,0.04,
+"stress (60/month, 2025)",300,0,13.5,0.1,
+"stress (60/month, 2025)",1000,0,13.7,0.1,
+"stress (60/month, 2025)",3000,0,13.7,0.1,
+"stress (60/month, 2025)",10000,0,13.7,0.1,
